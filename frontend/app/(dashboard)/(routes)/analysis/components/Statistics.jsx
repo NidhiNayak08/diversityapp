@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
+import { Icon, TrendingDown, TrendingUp } from "lucide-react";
 
 const Statistics = () => {
   const [data, setData] = useState([]);
@@ -87,22 +88,34 @@ const Statistics = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 grid-rows-2 ">
-      <div className="bg-slate-900">
-        <h3 className="text-lg font-semibold mb-2">Total Employees</h3>
-        <p>{stats.total}</p>
+    <div className="grid grid-cols-2 grid-rows-2 w-[40vw] border-2 m-4">
+      <div className=" p-4 border-r-2">
+        <h3 className="text-lg font-semibold mb-2">Total Employee</h3>
+        <div className="flex items-center">
+          <p className="mr-2">{stats.total}</p>
+          <TrendingDown color="#cc0000" />
+        </div>
       </div>
-      <div className="bg-slate-400">
-        <h3 className="text-lg font-semibold mb-2">Female Employees</h3>
-        <p>{stats.female}</p>
+      <div className=" p-4">
+        <h3 className="text-lg font-semibold mb-2">Female Employee</h3>
+        <div className="flex items-center">
+          <p className="mr-2">{stats.female}</p>
+          <TrendingUp color="#348d36" />
+        </div>
       </div>
-      <div className="bg-white">
-        <h3 className="text-lg font-semibold mb-2">Male Employees</h3>
-        <p>{stats.male}</p>
+      <div className="border-r border-t-2 p-4">
+        <h3 className="text-lg font-semibold mb-2">Male Employee</h3>
+        <div className="flex items-center">
+          <p className="mr-2">{stats.male}</p>
+          <TrendingUp color="#348d36" />
+        </div>
       </div>
-      <div className="bg-white">
+      <div className="border-l border-t-2 p-4">
         <h3 className="text-lg font-semibold mb-2">Disability Count</h3>
-        <p>{stats.disability}</p>
+        <div className="flex items-center">
+          <p className="mr-2">{stats.disability}</p>
+          <TrendingUp color="#348d36" />
+        </div>
       </div>
     </div>
   );
