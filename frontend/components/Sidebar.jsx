@@ -57,6 +57,9 @@ const Sidebar = () => {
           href="/dashboard"
           className="flex items-center pl-3 mb-5 border-b pb-2  border-slate-200"
         >
+          <div className="relative w-8 h-8 mr-1 ">
+            <Image fill alt="Logo" src="/logo.png" />
+          </div>
           <h1 className={cn("text-2xl font-bold", montserrat.className)}>
             Diversify
           </h1>

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
 import { Icon, TrendingDown, TrendingUp } from "lucide-react";
+import Trends from "./trends";
 
 const Statistics = () => {
   const [data, setData] = useState([]);
@@ -88,34 +89,28 @@ const Statistics = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 grid-rows-2 w-[40vw] border-2 m-4">
-      <div className=" p-4 border-r-2">
-        <h3 className="text-lg font-semibold mb-2">Total Employee</h3>
-        <div className="flex items-center">
-          <p className="mr-2">{stats.total}</p>
-          <TrendingDown color="#cc0000" />
-        </div>
+    <div className="flex justify-center border-2 border-slate-200 mt-6 rounded-lg">
+      <div className="grid grid-cols-2 grid-rows-2 w-[40vw] flex-[40%] border-r-2 border-slate-200 p-4">
+        <Trends
+          Heading="Total Employees"
+          Count={stats.total}
+          border={"border-r-2"}
+        />
+        <Trends Heading="Female Employee" Count={stats.female} border={""} />
+        <Trends
+          Heading="Male Employee"
+          Count={stats.male}
+          border={"border-r-2 border-t-2"}
+        />
+        <Trends
+          Heading="Disability Employees"
+          Count={stats.disability}
+          border={"border-t-2"}
+        />
       </div>
-      <div className=" p-4">
-        <h3 className="text-lg font-semibold mb-2">Female Employee</h3>
-        <div className="flex items-center">
-          <p className="mr-2">{stats.female}</p>
-          <TrendingUp color="#348d36" />
-        </div>
-      </div>
-      <div className="border-r border-t-2 p-4">
-        <h3 className="text-lg font-semibold mb-2">Male Employee</h3>
-        <div className="flex items-center">
-          <p className="mr-2">{stats.male}</p>
-          <TrendingUp color="#348d36" />
-        </div>
-      </div>
-      <div className="border-l border-t-2 p-4">
-        <h3 className="text-lg font-semibold mb-2">Disability Count</h3>
-        <div className="flex items-center">
-          <p className="mr-2">{stats.disability}</p>
-          <TrendingUp color="#348d36" />
-        </div>
+
+      <div className="flex-[60%]">
+        
       </div>
     </div>
   );
