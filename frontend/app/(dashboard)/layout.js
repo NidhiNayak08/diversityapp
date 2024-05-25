@@ -1,7 +1,20 @@
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 
 export default function DashboardLayout({ children }) {
+  // const { isLoaded, isSignedIn } = useAuth();
+  // const router = useRouter();
+
+  // useEffect(() => {
+  //   if (isLoaded && !isSignedIn) {
+  //     router.push("/sign-in");
+  //   }
+  // }, [isLoaded, isSignedIn, router]);
+
+  // if (!isLoaded || !isSignedIn) {
+  //   return null; // or a loading spinner, or a splash screen
+  // }
+
   return (
     <div className="h-full relative">
       <div className="hidden h-full md:w-60 md:flex md:flex-col md:fixed md:inset-y-0">
