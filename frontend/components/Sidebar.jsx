@@ -31,19 +31,19 @@ const routes = [
   {
     label: "Add Employee",
     icon: ImageIcon,
-    href: "/",
+    href: "/addemployee",
     color: "text-pink-500",
   },
   {
     label: "Add CSV Data",
     icon: MusicIcon,
-    href: "/",
+    href: "/csv",
     color: "text-emerald-500",
   },
   {
     label: "Customer Support",
     icon: SettingsIcon,
-    href: "/",
+    href: "/customer",
     color: "text-green-700",
   },
 ];
