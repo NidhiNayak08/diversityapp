@@ -39,7 +39,7 @@ const formSchema = z.object({
   lastname: z.string().min(2, "Last name should have at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   job: z.enum(
-    ["Frontend", "Backend", "SDE", "DevOps"],
+    ["Senior Manager", "Manager", "Trainee", "Admins"],
     "Please select a valid job role"
   ),
   dob: z.date({ invalid_type_error: "Please select a valid date" }).nullable(),
@@ -77,8 +77,8 @@ const AddEmployeePage = () => {
       if (values) {
         await axios.post(`/api/addemployee/`, values);
       }
-      router.refresh();
-      router.push(`/analysis`);
+      // router.refresh();
+      // router.push(`/analysis`);
     } catch (error) {
       console.log(error);
     } finally {
