@@ -1,5 +1,5 @@
 
-import AddCSV from "./components/csv-add";
+import AddCSV from "./components/csv-addform";
 import ClientCsvUpload from "./components/client-main";
 
 const AddFilepage = () => {

@@ -27,6 +27,8 @@ const Statistics = () => {
     });
   }, []);
 
+
+
   // Function to calculate statistics
   const calculateStats = (employees) => {
     const total = employees.length;
@@ -61,31 +63,8 @@ const Statistics = () => {
 
     setStats({ total, female, male, disability });
 
-    console.log(
-      "Total:",
-      total,
-      "Female:",
-      female,
-      "Male:",
-      male,
-      "Disability:",
-      disability
-    );
 
-    setStats({ total, female, male, disability });
 
-    console.log(
-      "Total:",
-      total,
-      "Female:",
-      female,
-      "Male:",
-      male,
-      "Disability:",
-      disability
-    );
-
-    setStats({ total, female, male, disability });
   };
 
   return (

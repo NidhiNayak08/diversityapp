@@ -26,6 +26,7 @@ const columns = [
   columnHelper.accessor("Division", {
     header: "Department",
   }),
+  
 ];
 
 export { columns, DataPropTypes };
