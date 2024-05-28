@@ -1,13 +1,21 @@
+"use client"
+
 import React from "react";
-import AddEmplyeepage from "./components/addemployeeForm";
 import Heading from "@/components/ui/heading";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const router = useRouter();
   return (
     <div className="flex-col m-8">
-      <div className="">
+      <div className="flex justify-between">
         <Heading title="Add Employee" description={""} />
-        <AddEmplyeepage />
+        <Button className="" onClick={() => router.push(`/addemployee/new`)}>
+          <Plus className="h-4 w-4 mr-2" />
+          Add New
+        </Button>
       </div>
     </div>
   );
