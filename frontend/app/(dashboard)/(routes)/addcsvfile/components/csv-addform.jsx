@@ -90,21 +90,88 @@ const CSVform = () => {
     setFilteredData(filtered);
   };
 
+  // const handledataPost = async () => {
+  //   try {
+  //     setLoading(true);
+  //     if (filteredData.length > 0) {
+  //       // Log data before sending
+  //       console.log("Data to be posted: ", JSON.stringify(filteredData));
+
+  //       await axios.post(`/api/csvupload/`, { data: filteredData });
+  //       router.refresh();
+  //       router.push(`/analysis`);
+  //     } else {
+  //       console.log("No data to post");
+  //     }
+  //   } catch (error) {
+  //     console.log("Error posting data:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  const parseDate = (dateString) => {
+    if (!dateString) {
+      throw new Error("Invalid Date of Birth: missing or undefined");
+    }
+    const [day, month, year] = dateString.split("-");
+    if (!day || !month || !year) {
+      throw new Error(`Invalid Date of Birth format: ${dateString}`);
+    }
+    return `${year}-${month}-${day}`;
+  };
+
   const handledataPost = async () => {
     try {
       setLoading(true);
-      if (filteredData) {
-        await axios.post(`/api/csvupload/`, filteredData);
+      if (filteredData.length > 0) {
+        // Ensure all dates are valid and properly formatted
+        const validData = filteredData.map((employee) => {
+          let dob = employee["Date of Birth"];
+          if (!dob) {
+            dob = new Date().toISOString().split("T")[0]; // Set Date of Birth to null if missing
+          } else {
+            dob = parseDate(dob);
+            if (isNaN(new Date(dob))) {
+              console.error(
+                `Invalid Date of Birth for employee: ${JSON.stringify(
+                  employee
+                )}`
+              );
+              throw new Error(
+                `Invalid Date of Birth for employee: ${JSON.stringify(
+                  employee
+                )}`
+              );
+            }
+          }
+          return {
+            ...employee,
+            "Date of Birth": dob,
+          };
+        });
+
+        // Log data before sending
+        console.log("Data to be posted: ", JSON.stringify(validData));
+
+        const response = await axios.post(`/api/csvupload/`, {
+          data: validData,
+        });
+        console.log("Post response: ", response.data);
+
+        router.refresh();
+        router.push(`/analysis`);
+      } else {
+        console.log("No data to post");
       }
-      router.refresh();
-      router.push(`/analysis`);
     } catch (error) {
-      console.log(error);
+      console.log(
+        "Error posting data:",
+        error.response ? error.response.data : error.message
+      );
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <>
       <div className="flex flex-col items-center justify-center mt-8">
@@ -178,9 +245,10 @@ const CSVform = () => {
             <Button
               onClick={handledataPost}
               className="flex items-center justify-center"
+              disabled={loading}
             >
               <Upload className="h-4 w-4 mr-2" />
-              Post Data
+              {loading ? "Posting..." : "Post Data"}
             </Button>
           </div>
           <Table className="min-w-full mt-4">
