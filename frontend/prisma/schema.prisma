@@ -19,6 +19,7 @@ model Employee{
   surname String
   dob DateTime
   gender String
+  job String
   phone String
   email String @unique
   disability String
