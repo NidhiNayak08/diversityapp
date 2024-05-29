@@ -25,7 +25,7 @@ const routes = [
   {
     label: "Dashboard",
     icon: MessageSquare,
-    href: "/summary",
+    href: "/analysis",
     color: "text-violet-500",
   },
   {
@@ -37,7 +37,7 @@ const routes = [
   {
     label: "Add CSV Data",
     icon: MusicIcon,
-    href: "/csv",
+    href: "/addcsvfile",
     color: "text-emerald-500",
   },
   {

@@ -90,25 +90,6 @@ const CSVform = () => {
     setFilteredData(filtered);
   };
 
-  // const handledataPost = async () => {
-  //   try {
-  //     setLoading(true);
-  //     if (filteredData.length > 0) {
-  //       // Log data before sending
-  //       console.log("Data to be posted: ", JSON.stringify(filteredData));
-
-  //       await axios.post(`/api/csvupload/`, { data: filteredData });
-  //       router.refresh();
-  //       router.push(`/analysis`);
-  //     } else {
-  //       console.log("No data to post");
-  //     }
-  //   } catch (error) {
-  //     console.log("Error posting data:", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
   const parseDate = (dateString) => {
     if (!dateString) {
       throw new Error("Invalid Date of Birth: missing or undefined");

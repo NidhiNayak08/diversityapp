@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
 import { Icon, TrendingDown, TrendingUp } from "lucide-react";
 import Trends from "./trends";
+import PieChart from "./PieChart";
 
 const Statistics = () => {
   const [data, setData] = useState([]);
@@ -83,7 +84,11 @@ const Statistics = () => {
         />
       </div>
 
-      <div className="flex-[60%]"></div>
+      <div className="flex-[60%] ">
+        <div className="w-[500px] ml-9 p-7 h-full">
+          <PieChart />
+        </div>
+      </div>
     </div>
   );
 };

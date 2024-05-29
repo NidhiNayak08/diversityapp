@@ -24,6 +24,7 @@ export async function POST(req) {
         ? new Date(employee["Date of Birth"])
         : new Date(),
       gender: employee.Gender || "",
+      job: employee.Division || "",
       phone: employee["Mobile Number"] || "",
       email: employee.Email || "",
       disability: employee.Disability || "",
@@ -34,7 +35,6 @@ export async function POST(req) {
 
     const result = await prisma.employee.createMany({
       data: mappedData,
-      skipDuplicates: true,
     });
 
     return NextResponse.json({
@@ -43,20 +43,6 @@ export async function POST(req) {
     });
   } catch (error) {
     console.error("[CSV_UPLOAD_POST]", error);
-
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      // The .code property can be accessed in a PrismaClientKnownRequestError instance
-      console.error(
-        "Prisma Client Known Request Error: ",
-        error.code,
-        error.message
-      );
-    } else if (error instanceof Prisma.PrismaClientValidationError) {
-      console.error("Prisma Client Validation Error: ", error.message);
-    } else {
-      console.error("Unexpected Error: ", error);
-    }
-
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
