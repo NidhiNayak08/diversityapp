@@ -4,6 +4,7 @@ import Papa from "papaparse";
 import { Icon, TrendingDown, TrendingUp } from "lucide-react";
 import Trends from "./trends";
 import PieChart from "./PieChart";
+import ChartContainer from "./ChartContainer";
 
 const Statistics = () => {
   const [data, setData] = useState([]);
@@ -86,7 +87,7 @@ const Statistics = () => {
 
       <div className="flex-[60%] ">
         <div className="w-[500px] ml-9 p-7 h-full">
-          <PieChart />
+          <ChartContainer />
         </div>
       </div>
     </div>
